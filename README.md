@@ -1,8 +1,10 @@
 # Mongoid::Enum
-
-[![Build
-Status](https://travis-ci.org/thetron/mongoid-enum.png)](https://travis-ci.org/thetron/mongoid-enum)
-[![Code Climate](https://codeclimate.com/github/thetron/mongoid-enum.png)](https://codeclimate.com/github/thetron/mongoid-enum)
+  ![RSpec](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/rspec.yml/badge.svg)
+  ![Linters](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/linter.yml/badge.svg)
+  [![Gem Version](https://badge.fury.io/rb/mongoid-enum.svg)](https://badge.fury.io/rb/mongoid-enum)
+  [![inline docs](https://inch-ci.org/github/dazzl-tv/mongoid-enum.svg)](https://inch-ci.org/github/dazzl-tv/mongoid-enum)
+  [![Maintainability](https://api.codeclimate.com/v1/badges/8fc5d78d80473fd9ae3e/maintainability)](https://codeclimate.com/github/dazzl-tv/mongoid-enum/maintainability)
+  [![Known Vulnerabilities](https://snyk.io/test/github/dazzl-tv/mongoid-enum/badge.svg)](https://snyk.io/test/github/dazzl-tv/mongoid-enum)
 
 Heavily inspired by [DHH's
 ActiveRecord::Enum](https://github.com/rails/rails/commit/db41eb8a6ea88b854bf5cd11070ea4245e1639c5), this little library is
