@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mongoid-enum (0.4.0)
+    mongoid-enum (1.0.0)
       mongoid (~> 7.2, >= 7.2.2)
 
 GEM

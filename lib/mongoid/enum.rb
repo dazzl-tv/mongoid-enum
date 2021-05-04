@@ -79,31 +79,54 @@ module Mongoid
       end
 
       def define_array_field_accessor(name, field_name)
-        class_eval "def #{name}=(vals) self.write_attribute(:#{field_name}, Array(vals).compact.map(&:to_sym)) end",
-                   __FILE__, __LINE__ - 1
-        class_eval "def #{name}() self.read_attribute(:#{field_name}) end", 
-__FILE__, __LINE__
+        class_eval <<-EOT, __FILE__, __LINE__ + 1
+        def #{name}=(vals)
+          self.write_attribute(:#{field_name},
+                               Array(vals).compact.map(&:to_sym))
+        end
+
+        def #{name}()
+          self.read_attribute(:#{field_name})
+        end
+        EOT
       end
 
       def define_string_field_accessor(name, field_name)
-        class_eval "def #{name}=(val) self.write_attribute(:#{field_name}, val && val.to_sym || nil) end", __FILE__,
-                   __LINE__ - 1
-        class_eval "def #{name}() self.read_attribute(:#{field_name}) end", 
-__FILE__, __LINE__
+        class_eval <<-EOT, __FILE__, __LINE__ + 1
+          def #{name}=(val)
+            self.write_attribute(:#{field_name},
+                                 val && val.to_sym || nil)
+          end
+
+          def #{name}()
+            self.read_attribute(:#{field_name})
+          end
+        EOT
       end
 
       def define_array_accessor(field_name, value)
-        class_eval 
-"def #{value}?() self.#{field_name}.include?(:#{value}) end", __FILE__, __LINE__
-        class_eval "def #{value}!() update_attributes! :#{field_name} => (self.#{field_name} || []) + [:#{value}] end",
-                   __FILE__, __LINE__ - 1
+        class_eval <<-EOT, __FILE__, __LINE__ + 1
+          def #{value}?()
+            self.#{field_name}.include?(:#{value})
+          end
+
+          def #{value}!()
+            update_attributes! \
+            :#{field_name} => (self.#{field_name} || []) + [:#{value}]
+          end
+        EOT
       end
 
       def define_string_accessor(field_name, value)
-        class_eval "def #{value}?() self.#{field_name} == :#{value} end", 
-__FILE__, __LINE__
-        class_eval 
-"def #{value}!() update_attributes! :#{field_name} => :#{value} end", __FILE__, __LINE__
+        class_eval <<-EOT, __FILE__, __LINE__ + 1
+          def #{value}?()
+            self.#{field_name} == :#{value}
+          end
+
+          def #{value}!()
+            update_attributes! :#{field_name} => :#{value}
+          end
+        EOT
       end
     end
   end

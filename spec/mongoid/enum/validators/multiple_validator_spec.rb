@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'ostruct'
 
 describe Mongoid::Enum::Validators::MultipleValidator do
-  subject { Mongoid::Enum::Validators::MultipleValidator }
+  subject { described_class }
 
   let(:values) { %i[lorem ipsum dolor sit] }
   let(:attribute) { :word }
@@ -14,7 +16,7 @@ describe Mongoid::Enum::Validators::MultipleValidator do
     context 'when allow_nil: true' do
       let(:allow_nil) { true }
 
-      context 'and value is nil' do
+      context 'with value is nil' do
         before { validator.validate_each(record, attribute, nil) }
 
         it 'validates' do
@@ -22,7 +24,7 @@ describe Mongoid::Enum::Validators::MultipleValidator do
         end
       end
 
-      context 'and value is []' do
+      context 'with value is []' do
         before { validator.validate_each(record, attribute, []) }
 
         it 'validates' do
@@ -32,20 +34,26 @@ describe Mongoid::Enum::Validators::MultipleValidator do
     end
 
     context 'when allow_nil: false' do
-      context 'and value is nil' do
+      context 'with value is nil' do
         before { validator.validate_each(record, attribute, nil) }
 
-        it "won't validate" do
+        it "won't validate (true)" do
           expect(record.errors[attribute].any?).to be true
+        end
+
+        it "won't validate (equal)" do
           expect(record.errors[attribute]).to eq ["is not in #{values.join ', '}"]
         end
       end
 
-      context 'and value is []' do
+      context 'with value is []' do
         before { validator.validate_each(record, attribute, []) }
 
-        it "won't validate" do
+        it "won't validate (true)" do
           expect(record.errors[attribute].any?).to be true
+        end
+
+        it "won't validate (equal)" do
           expect(record.errors[attribute]).to eq ["is not in #{values.join ', '}"]
         end
       end

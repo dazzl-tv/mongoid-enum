@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'mongoid/enum/configuration'
 
@@ -9,6 +11,7 @@ class User
   enum :roles, %i[author editor admin], multiple: true, default: [], required: false
 end
 
+# rubocop:disable RSpec/LeakyConstantDeclaration, Lint/ConstantDefinitionInBlock
 describe Mongoid::Enum do
   let(:klass) { User }
   let(:instance) { User.new }
@@ -22,26 +25,36 @@ describe Mongoid::Enum do
       expect(klass).to have_field(field_name)
     end
 
+    # rubocop:disable RSpec/ExampleLength
     it 'uses prefix defined in configuration' do
-      old_field_name_prefix = Mongoid::Enum.configuration.field_name_prefix
-      Mongoid::Enum.configure do |config|
+      old_field_name_prefix = described_class.configuration.field_name_prefix
+      described_class.configure do |config|
         config.field_name_prefix = '___'
       end
+
       UserWithoutPrefix = Class.new do
         include Mongoid::Document
         include Mongoid::Enum
 
         enum :status, %i[awaiting_approval approved banned]
       end
+
       expect(UserWithoutPrefix).to have_field '___status'
-      Mongoid::Enum.configure do |config|
+      described_class.configure do |config|
         config.field_name_prefix = old_field_name_prefix
       end
     end
+    # rubocop:enable RSpec/ExampleLength
 
     it 'is aliased' do
       expect(instance).to respond_to alias_name
+    end
+
+    it 'is :aliased=' do
       expect(instance).to respond_to :"#{alias_name}="
+    end
+
+    it 'is :aliased' do
       expect(instance).to respond_to :"#{alias_name}"
     end
 
@@ -52,7 +65,7 @@ describe Mongoid::Enum do
         end
 
         it 'validates using a custom validator' do
-          expect(klass).to custom_validate(multiple_field_name).with_validator(Mongoid::Enum::Validators::MultipleValidator)
+          expect(klass).to custom_validate(multiple_field_name).with_validator(described_class::Validators::MultipleValidator)
         end
       end
 
@@ -150,14 +163,13 @@ describe Mongoid::Enum do
           instance.save
           puts instance.errors.full_messages
           instance.reload
-          expect(instance.roles).to include(:author)
-          expect(instance.roles).to include(:editor)
+          expect(instance.roles).to include(:author, :editor)
         end
 
         it 'accepts arrays of symbols' do
           instance.roles = %i[author editor]
-          expect(instance.roles).to include(:author)
-          expect(instance.roles).to include(:editor)
+
+          expect(instance.roles).to include(:author, :editor)
         end
       end
 
@@ -183,11 +195,17 @@ describe Mongoid::Enum do
 
       describe '{{value}}?' do
         context 'when {{enum}} contains {{value}}' do
-          it 'returns true' do
+          before do
             instance.save
             instance.author!
             instance.editor!
+          end
+
+          it 'editor? returns true' do
             expect(instance.editor?).to be true
+          end
+
+          it 'author? returns true' do
             expect(instance.author?).to be true
           end
         end
@@ -212,7 +230,7 @@ describe Mongoid::Enum do
     end
 
     context 'when multiple' do
-      context 'and only one document' do
+      context 'with only one document' do
         it 'returns that document' do
           instance.save
           instance.author!
@@ -221,14 +239,21 @@ describe Mongoid::Enum do
         end
       end
 
-      context 'and more than one document' do
-        it 'returns all documents with those values' do
+      context 'with more than one document' do
+        before do
           instance.save
           instance.author!
           instance.editor!
+        end
+
+        it 'returns all author documents with those values' do
           instance2 = klass.create
           instance2.author!
+
           expect(User.author.to_a).to eq [instance, instance2]
+        end
+
+        it 'returns all editor documents with those values' do
           expect(User.editor.to_a).to eq [instance]
         end
       end
@@ -253,19 +278,20 @@ describe Mongoid::Enum do
 
   describe '.configuration' do
     it 'returns Configuration object' do
-      expect(Mongoid::Enum.configuration)
-        .to be_instance_of Mongoid::Enum::Configuration
+      expect(described_class.configuration)
+        .to be_instance_of described_class::Configuration
     end
 
     it 'returns same object when called multiple times' do
-      expect(Mongoid::Enum.configuration).to be Mongoid::Enum.configuration
+      expect(described_class.configuration).to be described_class.configuration
     end
   end
 
   describe '.configure' do
     it 'yields configuration if block is given' do
-      expect { |b| Mongoid::Enum.configure(&b) }
-        .to yield_with_args Mongoid::Enum.configuration
+      expect { |b| described_class.configure(&b) }
+        .to yield_with_args described_class.configuration
     end
   end
 end
+# rubocop:enable RSpec/LeakyConstantDeclaration, Lint/ConstantDefinitionInBlock

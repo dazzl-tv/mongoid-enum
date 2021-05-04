@@ -16,6 +16,14 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+    - mongoid-enum.gemspec
+Metrics/MethodLength:
+  Exclude:
+    - lib/mongoid/enum.rb
+
+### NAMINGS ###
+Naming/HeredocDelimiterNaming:
+  Enabled: false
 
 ### LAYOUTS ###
 Layout/LineLength:
@@ -24,5 +32,15 @@ Layout/LineLength:
     - spec/**/*
 
 ### STYLES ###
+Style/Documentation:
+  Enabled: false
 Style/RescueStandardError:
   Enabled: false
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+### RSPEC ###
+RSpec/MultipleMemoizedHelpers:
+  Max: 6
+RSpec/NestedGroups:
+  Max: 5
