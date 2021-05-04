@@ -1,0 +1,28 @@
+---
+
+require:
+  - rubocop-faker
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - bin/**/*
+    - vendor/**/*
+  TargetRubyVersion: 2.6
+  NewCops: enable
+
+### METRICS ###
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+### LAYOUTS ###
+Layout/LineLength:
+  Max: 80
+  Exclude:
+    - spec/**/*
+
+### STYLES ###
+Style/RescueStandardError:
+  Enabled: false
