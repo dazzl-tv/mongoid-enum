@@ -3,6 +3,7 @@ require 'ostruct'
 
 describe Mongoid::Enum::Validators::MultipleValidator do
   subject { Mongoid::Enum::Validators::MultipleValidator }
+
   let(:values) { %i[lorem ipsum dolor sit] }
   let(:attribute) { :word }
   let(:record) { OpenStruct.new(:errors => { attribute => [] }, attribute => values.first) }
@@ -14,14 +15,16 @@ describe Mongoid::Enum::Validators::MultipleValidator do
       let(:allow_nil) { true }
 
       context 'and value is nil' do
-        before(:each) { validator.validate_each(record, attribute, nil) }
+        before { validator.validate_each(record, attribute, nil) }
+
         it 'validates' do
           expect(record.errors[attribute].empty?).to be true
         end
       end
 
       context 'and value is []' do
-        before(:each) { validator.validate_each(record, attribute, []) }
+        before { validator.validate_each(record, attribute, []) }
+
         it 'validates' do
           expect(record.errors[attribute].empty?).to be true
         end
@@ -30,14 +33,17 @@ describe Mongoid::Enum::Validators::MultipleValidator do
 
     context 'when allow_nil: false' do
       context 'and value is nil' do
-        before(:each) { validator.validate_each(record, attribute, nil) }
+        before { validator.validate_each(record, attribute, nil) }
+
         it "won't validate" do
           expect(record.errors[attribute].any?).to be true
           expect(record.errors[attribute]).to eq ["is not in #{values.join ', '}"]
         end
       end
+
       context 'and value is []' do
-        before(:each) { validator.validate_each(record, attribute, []) }
+        before { validator.validate_each(record, attribute, []) }
+
         it "won't validate" do
           expect(record.errors[attribute].any?).to be true
           expect(record.errors[attribute]).to eq ["is not in #{values.join ', '}"]
@@ -47,7 +53,9 @@ describe Mongoid::Enum::Validators::MultipleValidator do
 
     context 'when value is included' do
       let(:allow_nil) { rand(2).zero? }
-      before(:each) { validator.validate_each(record, attribute, [values.sample]) }
+
+      before { validator.validate_each(record, attribute, [values.sample]) }
+
       it 'validates' do
         expect(record.errors[attribute].empty?).to be true
       end
@@ -55,7 +63,9 @@ describe Mongoid::Enum::Validators::MultipleValidator do
 
     context 'when value is not included' do
       let(:allow_nil) { rand(2).zero? }
-      before(:each) { validator.validate_each(record, attribute, [:amet]) }
+
+      before { validator.validate_each(record, attribute, [:amet]) }
+
       it "won't validate" do
         expect(record.errors[attribute].any?).to be true
       end
@@ -63,7 +73,9 @@ describe Mongoid::Enum::Validators::MultipleValidator do
 
     context 'when multiple values included' do
       let(:allow_nil) { rand(2).zero? }
-      before(:each) { validator.validate_each(record, attribute, [values.first, values.last]) }
+
+      before { validator.validate_each(record, attribute, [values.first, values.last]) }
+
       it 'validates' do
         expect(record.errors[attribute].empty?).to be true
       end
@@ -71,7 +83,9 @@ describe Mongoid::Enum::Validators::MultipleValidator do
 
     context 'when one value is not included ' do
       let(:allow_nil) { rand(2).zero? }
-      before(:each) { validator.validate_each(record, attribute, [values.first, values.last, :amet]) }
+
+      before { validator.validate_each(record, attribute, [values.first, values.last, :amet]) }
+
       it "won't validate" do
         expect(record.errors[attribute].any?).to be true
       end

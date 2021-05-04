@@ -71,13 +71,15 @@ describe Mongoid::Enum do
   describe "'required' option" do
     context 'when true' do
       let(:instance) { User.new status: nil }
+
       it 'is not valid with nil value' do
-        expect(instance).to_not be_valid
+        expect(instance).not_to be_valid
       end
     end
 
     context 'when false' do
       let(:instance) { User.new roles: nil }
+
       it 'is valid with nil value' do
         expect(instance).to be_valid
       end
@@ -120,6 +122,7 @@ describe Mongoid::Enum do
             expect(instance.banned?).to eq true
           end
         end
+
         context 'when {{enum}} != {{value}}' do
           it 'returns false' do
             instance.save
@@ -253,6 +256,7 @@ describe Mongoid::Enum do
       expect(Mongoid::Enum.configuration)
         .to be_instance_of Mongoid::Enum::Configuration
     end
+
     it 'returns same object when called multiple times' do
       expect(Mongoid::Enum.configuration).to be Mongoid::Enum.configuration
     end

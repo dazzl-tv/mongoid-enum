@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mongoid
   module Enum
     module Validators
@@ -6,7 +8,8 @@ module Mongoid
           values = Array(values)
 
           if options[:allow_nil]
-            add_error_message record, attribute unless all_included?(values, options[:in])
+            add_error_message record, attribute unless all_included?(values,
+                                                                     options[:in])
           elsif values.empty? || !all_included?(values, options[:in])
             add_error_message record, attribute
           end
