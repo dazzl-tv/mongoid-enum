@@ -1,28 +1,47 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mongoid/enum/version'
+
+require 'mongoid/enum/info'
 
 Gem::Specification.new do |spec|
-  spec.name          = "mongoid-enum"
-  spec.version       = Mongoid::Enum::VERSION
-  spec.authors       = ["Nicholas Bruning"]
-  spec.email         = ["nicholas@bruning.com.au"]
-  spec.description   = %q{Heavily inspired by DDH's ActiveRecord::Enum, this little library is there to help you cut down the cruft in your models and make the world a happier place at the same time.}
-  spec.summary       = %q{Sweet enum sugar for your Mongoid documents}
-  spec.homepage      = "https://github.com/thetron/mongoid-enum"
-  spec.license       = "MIT"
+  spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/develop')
+                         "#{Mongoid::Enum::VERSION}.pre.#{ENV['GITHUB_RUN_ID']}"
+                       else
+                         Mongoid::Enum::VERSION
+                       end
+  spec.name          = Mongoid::Enum::GEM_NAME
+  spec.authors       = Mongoid::Enum::AUTHORS
+  spec.email         = Mongoid::Enum::EMAILS
 
-  spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  spec.summary       = Mongoid::Enum::SUMMARY
+  spec.description   = Mongoid::Enum::DESCRIPTION
 
-  spec.add_runtime_dependency "mongoid", "~> 5.0"
+  spec.homepage      = Mongoid::Enum::HOMEPAGE
+  spec.license       = Mongoid::Enum::LICENSE
 
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec", "~> 3.1"
-  spec.add_development_dependency "guard-rspec", "~> 4.6.2"
-  spec.add_development_dependency "mongoid-rspec", "~> 3.0"
+  spec.files         = ['Gemfile', 'LICENSE', 'Rakefile', 'README.md']
+  spec.files         += Dir['lib/**/*']
+  spec.files         += Dir['spec/**/*']
+
+  spec.require_paths = ['lib']
+
+  spec.required_ruby_version = '>= 2.6.0'
+
+  spec.add_development_dependency 'bundler', '~> 2.2', '<= 2.2.16'
+  spec.add_development_dependency 'faker', '~> 2.17'
+  spec.add_development_dependency 'mongoid-rspec', '~> 4.1'
+  spec.add_development_dependency 'pry-byebug', '~> 3.9'
+  spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.3'
+  spec.add_development_dependency 'reek', '~> 6.0.4'
+  spec.add_development_dependency 'rspec', '~> 3.10'
+  spec.add_development_dependency 'rubocop', '~> 1.13.0'
+  spec.add_development_dependency 'rubocop-faker', '~> 1.1'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.11', '>= 1.11.1'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.3'
+  spec.add_development_dependency 'simplecov', '~> 0.21.2'
+  spec.add_development_dependency 'simplecov_json_formatter', '~> 0.1.3'
+
+  spec.add_dependency 'mongoid', '~> 7.2', '>= 7.2.2'
 end

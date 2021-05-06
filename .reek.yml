@@ -1,0 +1,22 @@
+---
+
+detectors:
+  IrresponsibleModule:
+    enabled: false
+
+directories:
+  "lib/mongoid":
+    TooManyConstants:
+      enabled: false
+    TooManyStatements:
+      enabled: false
+    UtilityFunction:
+      enabled: false
+    FeatureEnvy:
+      enabled: false
+    DuplicateMethodCall:
+      enabled: false
+    DataClump:
+      enabled: false
+    Attribute:
+      enabled: false
