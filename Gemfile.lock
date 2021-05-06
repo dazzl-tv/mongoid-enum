@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mongoid-enum (1.0.0)
+    mongoid7-enum (1.0.0)
       mongoid (~> 7.2, >= 7.2.2)
 
 GEM
@@ -114,8 +114,8 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.2, <= 2.2.16)
   faker (~> 2.17)
-  mongoid-enum!
   mongoid-rspec (~> 4.1)
+  mongoid7-enum!
   pry-byebug (~> 3.9)
   rake (~> 13.0, >= 13.0.3)
   reek (~> 6.0.4)
