@@ -7,7 +7,7 @@ module Mongoid
     VERSION = '1.0.0'
 
     # Name to gem
-    GEM_NAME = 'mongoid-enum'
+    GEM_NAME = 'mongoid7-enum'
 
     # Authors
     AUTHORS = ['VAILLANT Jeremy'].freeze
