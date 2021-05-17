@@ -45,7 +45,7 @@ module Mongoid7
       def create_validations(field_name, values, options)
         if options[:multiple] && options[:validate]
           validates field_name,
-                    'mongoid/enum/validators/multiple': {
+                    'mongoid7/enum/validators/multiple': {
                       in: values.map(&:to_sym),
                       allow_nil: !options[:required]
                     }
