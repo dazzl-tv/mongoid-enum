@@ -3,7 +3,7 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'mongoid/enum/info'
+require 'mongoid7/enum/info'
 
 Gem::Specification.new do |spec|
   spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/master')
