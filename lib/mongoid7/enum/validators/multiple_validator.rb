@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Mongoid
+module Mongoid7
   module Enum
     module Validators
       class MultipleValidator < ActiveModel::EachValidator

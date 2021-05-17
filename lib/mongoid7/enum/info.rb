@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Define constant to gem
-module Mongoid
+module Mongoid7
   module Enum
     # Define version to gem
     VERSION = '1.0.0'

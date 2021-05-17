@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Mongoid
+module Mongoid7
   module Enum
     class Configuration
       attr_accessor :field_name_prefix

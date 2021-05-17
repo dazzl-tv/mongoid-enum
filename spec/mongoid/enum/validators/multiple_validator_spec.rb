@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'ostruct'
 
-describe Mongoid::Enum::Validators::MultipleValidator do
+describe Mongoid7::Enum::Validators::MultipleValidator do
   subject { described_class }
 
   let(:values) { %i[lorem ipsum dolor sit] }

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'mongoid/enum/info'
-require 'mongoid/enum/validators/multiple_validator'
-require 'mongoid/enum/configuration'
+require 'mongoid7/enum/info'
+require 'mongoid7/enum/validators/multiple_validator'
+require 'mongoid7/enum/configuration'
 
-module Mongoid
+module Mongoid7
   module Enum
     extend ActiveSupport::Concern
     module ClassMethods
       def enum(name, values, options = {})
-        field_name = :"#{Mongoid::Enum.configuration.field_name_prefix}#{name}"
+        field_name = :"#{Mongoid7::Enum.configuration.field_name_prefix}#{name}"
         options = default_options(values).merge(options)
 
         set_values_constant name, values

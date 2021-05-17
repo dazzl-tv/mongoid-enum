@@ -6,20 +6,20 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'mongoid/enum/info'
 
 Gem::Specification.new do |spec|
-  spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/develop')
-                         "#{Mongoid::Enum::VERSION}.pre.#{ENV['GITHUB_RUN_ID']}"
+  spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/master')
+                         Mongoid7::Enum::VERSION
                        else
-                         Mongoid::Enum::VERSION
+                         "#{Mongoid7::Enum::VERSION}.pre.#{ENV['GITHUB_RUN_ID']}"
                        end
-  spec.name          = Mongoid::Enum::GEM_NAME
-  spec.authors       = Mongoid::Enum::AUTHORS
-  spec.email         = Mongoid::Enum::EMAILS
+  spec.name          = Mongoid7::Enum::GEM_NAME
+  spec.authors       = Mongoid7::Enum::AUTHORS
+  spec.email         = Mongoid7::Enum::EMAILS
 
-  spec.summary       = Mongoid::Enum::SUMMARY
-  spec.description   = Mongoid::Enum::DESCRIPTION
+  spec.summary       = Mongoid7::Enum::SUMMARY
+  spec.description   = Mongoid7::Enum::DESCRIPTION
 
-  spec.homepage      = Mongoid::Enum::HOMEPAGE
-  spec.license       = Mongoid::Enum::LICENSE
+  spec.homepage      = Mongoid7::Enum::HOMEPAGE
+  spec.license       = Mongoid7::Enum::LICENSE
 
   spec.files         = ['Gemfile', 'LICENSE', 'Rakefile', 'README.md']
   spec.files         += Dir['lib/**/*']

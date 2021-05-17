@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'mongoid/enum/configuration'
+require 'mongoid7/enum/configuration'
 
 class User
   include Mongoid::Document
-  include Mongoid::Enum
+  include Mongoid7::Enum
 
   enum :status, %i[awaiting_approval approved banned]
   enum :roles, %i[author editor admin], multiple: true, default: [], required: false
 end
 
 # rubocop:disable RSpec/LeakyConstantDeclaration, Lint/ConstantDefinitionInBlock
-describe Mongoid::Enum do
+describe Mongoid7::Enum do
   let(:klass) { User }
   let(:instance) { User.new }
   let(:alias_name) { :status }
@@ -34,7 +34,7 @@ describe Mongoid::Enum do
 
       UserWithoutPrefix = Class.new do
         include Mongoid::Document
-        include Mongoid::Enum
+        include Mongoid7::Enum
 
         enum :status, %i[awaiting_approval approved banned]
       end

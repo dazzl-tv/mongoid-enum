@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Mongoid::Enum::Configuration do
+describe Mongoid7::Enum::Configuration do
   subject(:conf) { described_class.new }
 
   describe 'field_name_prefix' do
