@@ -12,6 +12,7 @@ on:
     workflows: ["Deploy"]
     types:
       - completed
+      - requested
 
 jobs:
   on-success:
