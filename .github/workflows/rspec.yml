@@ -27,8 +27,21 @@ jobs:
         mongodb-version: ${{ matrix.mongodb-version }}
     - name: Run tests
       run: bundle exec rake
+      - uses: actions/upload-artifact@master
+        with:
+          name: coverage
+          path: coverage/coverage.json
+  coverage:
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/upload-artifact@master
+        with:
+          name: coverage
+          path: coverage/coverage.json
     - name: Publish code coverage
-      uses: paambaati/codeclimate-action@v2.7.5
+      uses: paambaati/codeclimate-action@v2.7.4
       env:
         CC_TEST_REPORTER_ID: "${{secrets.CC_TEST_REPORTER_ID}}"
       with:
