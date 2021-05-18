@@ -5,8 +5,6 @@ name: RSpec
 on:
   pull_request:
     branches:
-      - bugfix/*
-      - master
       - develop
 
 jobs:
@@ -43,7 +41,7 @@ jobs:
           name: coverage
           path: coverage/coverage.json
     - name: Publish code coverage
-      uses: paambaati/codeclimate-action@v2.7.4
+      uses: paambaati/codeclimate-action@v2.7.1
       env:
         CC_TEST_REPORTER_ID: "${{secrets.CC_TEST_REPORTER_ID}}"
       with:
