@@ -14,10 +14,10 @@ on:
       - completed
 
 jobs:
-  build:
+  on-success:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Build + Publish
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.6
