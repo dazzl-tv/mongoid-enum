@@ -112,7 +112,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler (~> 2.2, <= 2.2.17)
   faker (~> 2.17)
   mongoid-enum-dazzl!
   mongoid-rspec (~> 4.1)
