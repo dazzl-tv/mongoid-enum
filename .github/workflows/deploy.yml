@@ -9,10 +9,8 @@ on:
       - master
       - develop
   workflow_run:
-    workflows:
-      - RSpec
-      - Linter
-      - gitleaks
+    types:
+      - completed
 
 jobs:
   build:
