@@ -9,7 +9,7 @@ on:
       - master
       - develop
   workflow_run:
-    workflows: ["Deploy"]
+    workflows: ["RSpec"]
     types:
       - completed
       - requested
