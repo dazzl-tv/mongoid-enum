@@ -2,7 +2,7 @@
 
 require 'mongoid'
 require 'mongoid/rspec'
-require 'mongoid/enum'
+require 'mongoid/enum/dazzl'
 require 'simplecov'
 require 'simplecov_json_formatter'
 
