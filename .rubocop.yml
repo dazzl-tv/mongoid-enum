@@ -16,10 +16,10 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
-    - mongoid-enum.gemspec
+    - mongoid-enum-dazzl.gemspec
 Metrics/MethodLength:
   Exclude:
-    - lib/mongoid/enum.rb
+    - lib/mongoid/enum/dazzl.rb
 
 ### NAMINGS ###
 Naming/HeredocDelimiterNaming:

@@ -3,23 +3,24 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'mongoid/enum/info'
+require 'mongoid/enum/dazzl/info'
 
 Gem::Specification.new do |spec|
-  spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/develop')
-                         "#{Mongoid::Enum::VERSION}.pre.#{ENV['GITHUB_RUN_ID']}"
+  version = Mongoid::Enum::Dazzl::VERSION
+  spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/master')
+                         version
                        else
-                         Mongoid::Enum::VERSION
+                         "#{version}.pre.#{ENV['GITHUB_RUN_ID']}"
                        end
-  spec.name          = Mongoid::Enum::GEM_NAME
-  spec.authors       = Mongoid::Enum::AUTHORS
-  spec.email         = Mongoid::Enum::EMAILS
+  spec.name          = Mongoid::Enum::Dazzl::GEM_NAME
+  spec.authors       = Mongoid::Enum::Dazzl::AUTHORS
+  spec.email         = Mongoid::Enum::Dazzl::EMAILS
 
-  spec.summary       = Mongoid::Enum::SUMMARY
-  spec.description   = Mongoid::Enum::DESCRIPTION
+  spec.summary       = Mongoid::Enum::Dazzl::SUMMARY
+  spec.description   = Mongoid::Enum::Dazzl::DESCRIPTION
 
-  spec.homepage      = Mongoid::Enum::HOMEPAGE
-  spec.license       = Mongoid::Enum::LICENSE
+  spec.homepage      = Mongoid::Enum::Dazzl::HOMEPAGE
+  spec.license       = Mongoid::Enum::Dazzl::LICENSE
 
   spec.files         = ['Gemfile', 'LICENSE', 'Rakefile', 'README.md']
   spec.files         += Dir['lib/**/*']
@@ -29,7 +30,6 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.6.0'
 
-  spec.add_development_dependency 'bundler', '~> 2.2', '<= 2.2.16'
   spec.add_development_dependency 'faker', '~> 2.17'
   spec.add_development_dependency 'mongoid-rspec', '~> 4.1'
   spec.add_development_dependency 'pry-byebug', '~> 3.9'
