@@ -9,6 +9,7 @@ on:
       - master
       - develop
   workflow_run:
+    workflows: ["Deploy"]
     types:
       - completed
 
