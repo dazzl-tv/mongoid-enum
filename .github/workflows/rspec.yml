@@ -27,10 +27,10 @@ jobs:
         mongodb-version: ${{ matrix.mongodb-version }}
     - name: Run tests
       run: bundle exec rake
-      - uses: actions/upload-artifact@master
-        with:
-          name: coverage
-          path: coverage/coverage.json
+    - uses: actions/upload-artifact@master
+      with:
+        name: coverage
+        path: coverage/coverage.json
   coverage:
     needs: [ test ]
     name: coverage
