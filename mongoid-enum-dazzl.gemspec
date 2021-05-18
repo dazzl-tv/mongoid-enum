@@ -6,10 +6,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'mongoid/enum/dazzl/info'
 
 Gem::Specification.new do |spec|
+  version = Mongoid::Enum::Dazzl::VERSION
   spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/master')
-                         Mongoid::Enum::Dazzl::VERSION
+                         version
                        else
-                         "#{Mongoid::Enum::Dazzl::VERSION}.pre.#{ENV['GITHUB_RUN_ID']}"
+                         "#{version}.pre.#{ENV['GITHUB_RUN_ID']}"
                        end
   spec.name          = Mongoid::Enum::Dazzl::GEM_NAME
   spec.authors       = Mongoid::Enum::Dazzl::AUTHORS

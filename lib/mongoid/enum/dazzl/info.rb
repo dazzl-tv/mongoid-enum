@@ -4,8 +4,7 @@
 module Mongoid
   module Enum
     module Dazzl
-    # Define version to gem
-    # module Dazzl
+      # Define version to gem
       VERSION = '1.0.0'
 
       # Name to gem
