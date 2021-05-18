@@ -3,23 +3,23 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'mongoid7/enum/info'
+require 'mongoid/enum/dazzl/info'
 
 Gem::Specification.new do |spec|
   spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/master')
-                         Mongoid7::Enum::VERSION
+                         Mongoid::Enum::Dazzl::VERSION
                        else
-                         "#{Mongoid7::Enum::VERSION}.pre.#{ENV['GITHUB_RUN_ID']}"
+                         "#{Mongoid::Enum::Dazzl::VERSION}.pre.#{ENV['GITHUB_RUN_ID']}"
                        end
-  spec.name          = Mongoid7::Enum::GEM_NAME
-  spec.authors       = Mongoid7::Enum::AUTHORS
-  spec.email         = Mongoid7::Enum::EMAILS
+  spec.name          = Mongoid::Enum::Dazzl::GEM_NAME
+  spec.authors       = Mongoid::Enum::Dazzl::AUTHORS
+  spec.email         = Mongoid::Enum::Dazzl::EMAILS
 
-  spec.summary       = Mongoid7::Enum::SUMMARY
-  spec.description   = Mongoid7::Enum::DESCRIPTION
+  spec.summary       = Mongoid::Enum::Dazzl::SUMMARY
+  spec.description   = Mongoid::Enum::Dazzl::DESCRIPTION
 
-  spec.homepage      = Mongoid7::Enum::HOMEPAGE
-  spec.license       = Mongoid7::Enum::LICENSE
+  spec.homepage      = Mongoid::Enum::Dazzl::HOMEPAGE
+  spec.license       = Mongoid::Enum::Dazzl::LICENSE
 
   spec.files         = ['Gemfile', 'LICENSE', 'Rakefile', 'README.md']
   spec.files         += Dir['lib/**/*']
