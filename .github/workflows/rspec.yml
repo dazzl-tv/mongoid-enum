@@ -23,7 +23,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
-        run: bundle config --local deployment false
+      - run: bundle config --local deployment false
       - name: Start MongoDB v${{ matrix.mongodb-version }}
         uses: supercharge/mongodb-github-action@1.2.0
         with:
