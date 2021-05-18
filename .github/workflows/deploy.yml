@@ -8,6 +8,11 @@ on:
       - bugfix/*
       - master
       - develop
+  workflow_run:
+    workflows:
+      - RSpec
+      - Linter
+      - gitleaks
 
 jobs:
   build:
