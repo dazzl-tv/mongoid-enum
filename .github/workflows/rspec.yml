@@ -33,7 +33,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: result-test
-          path: ${{ github.workspace }}/coverage/
+          path: ${{ github.workspace }}/mongoid-enum/coverage/
           if-no-files-found: error
   coverage:
     needs: [ test ]
