@@ -33,7 +33,8 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: result-test
-          path: coverage/
+          path: ${{ github.workspace }}/coverage/
+          if-no-files-found: error
   coverage:
     needs: [ test ]
     name: coverage
