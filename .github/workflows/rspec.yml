@@ -32,17 +32,17 @@ jobs:
         run: bundle exec rake
       - uses: actions/upload-artifact@master
         with:
-          name: coverage
-          path: coverage/coverage.json
+          name: result-test
+          path: coverage/
   coverage:
     needs: [ test ]
     name: coverage
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/upload-artifact@master
+      - uses: actions/download-artifact@v2
         with:
-          name: coverage
-          path: coverage/coverage.json
+          name: result-test
+          path: coverage/
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v2.7.1
         env:
