@@ -6,14 +6,6 @@ require 'mongoid/enum/dazzl'
 require 'simplecov'
 require 'simplecov_json_formatter'
 
-SimpleCov.start do
-  # Merge result
-  use_merging true
-
-  # Formatter
-  formatter SimpleCov::Formatter::JSONFormatter
-end
-
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 
 ENV['MONGOID_ENV'] = 'test'
