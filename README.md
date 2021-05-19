@@ -1,5 +1,5 @@
 # Mongoid::Enum
-  [![RSpec](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/rspec.yml/badge.svg?branch=develop&event=pull_request)](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/rspec.yml)
+  [![RSpec](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/rspec.yml/badge.svg)](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/rspec.yml)
   [![Linter](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/linter.yml/badge.svg)](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/linter.yml)
   [![Gem Version](https://badge.fury.io/rb/mongoid-enum.svg)](https://badge.fury.io/rb/mongoid-enum)
   [![Docs](https://inch-ci.org/github/dazzl-tv/mongoid-enum.svg)](https://inch-ci.org/github/dazzl-tv/mongoid-enum)
