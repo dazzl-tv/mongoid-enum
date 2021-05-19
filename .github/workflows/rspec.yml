@@ -30,7 +30,7 @@ jobs:
           mongodb-version: ${{ matrix.mongodb-version }}
       - name: Run tests
         run: bundle exec rake
-      - uses: actions/upload-artifact@master
+      - uses: actions/upload-artifact@v2
         with:
           name: result-test
           path: coverage/
