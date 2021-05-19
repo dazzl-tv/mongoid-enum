@@ -51,4 +51,4 @@ jobs:
         with:
           debug: true
           coverageLocations: |
-            ${{ github.workspace }}coverage/coverage.json:simplecov
+            ${{ github.workspace }}/coverage/coverage.json:simplecov
