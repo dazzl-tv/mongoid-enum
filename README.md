@@ -1,10 +1,9 @@
-# Mongoid::Enum
+# Mongoid::Enum::Dazzl
   [![RSpec](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/rspec.yml/badge.svg)](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/rspec.yml)
   [![Linter](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/linter.yml/badge.svg)](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/linter.yml)
   [![Gem Version](https://badge.fury.io/rb/mongoid-enum-dazzl.svg)](https://badge.fury.io/rb/mongoid-enum-dazzl)
   [![Docs](https://inch-ci.org/github/dazzl-tv/mongoid-enum.svg)](https://inch-ci.org/github/dazzl-tv/mongoid-enum)
-  [![Maintainability](https://api.codeclimate.com/v1/badges/8ac20c418f9288f6671d/maintainability)](https://codeclimate.com/github/dazzl-tv/mongoid-enum/maintainability)
-  [![Test Coverage](https://api.codeclimate.com/v1/badges/8ac20c418f9288f6671d/test_coverage)](https://codeclimate.com/github/dazzl-tv/mongoid-enum/test_coverage)
+  [![Known Vulnerabilities](https://snyk.io/test/github/dazzl-tv/mongoid-enum/badge.svg)](https://snyk.io/test/github/dazzl-tv/mongoid-enum)
 
 Heavily inspired by [DHH's
 ActiveRecord::Enum](https://github.com/rails/rails/commit/db41eb8a6ea88b854bf5cd11070ea4245e1639c5), this little library is
@@ -20,7 +19,7 @@ and a few other bits-and-bobs.
 Add this to your Gemfile:
 
 ```ruby
-gem "mongoid-enum"
+gem 'mongoid-enum-dazzl'
 ```
 
 And then run `bundle install`.
@@ -31,7 +30,7 @@ And then run `bundle install`.
 ```ruby
 class Payment
   include Mongoid::Document
-  include Mongoid::Enum
+  include Mongoid::Enum::Dazzl
 
   enum :status, [:pending, :approved, :declined]
 end
