@@ -3,6 +3,8 @@
   [![Linter](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/linter.yml/badge.svg)](https://github.com/dazzl-tv/mongoid-enum/actions/workflows/linter.yml)
   [![Gem Version](https://badge.fury.io/rb/mongoid-enum-dazzl.svg)](https://badge.fury.io/rb/mongoid-enum-dazzl)
   [![Docs](https://inch-ci.org/github/dazzl-tv/mongoid-enum.svg)](https://inch-ci.org/github/dazzl-tv/mongoid-enum)
+  [![Maintainability](https://api.codeclimate.com/v1/badges/fd1a01968b5cb53a708f/maintainability)](https://codeclimate.com/github/dazzl-tv/mongoid-enum/maintainability)
+  [![Test Coverage](https://api.codeclimate.com/v1/badges/fd1a01968b5cb53a708f/test_coverage)](https://codeclimate.com/github/dazzl-tv/mongoid-enum/test_coverage)
   [![Known Vulnerabilities](https://snyk.io/test/github/dazzl-tv/mongoid-enum/badge.svg)](https://snyk.io/test/github/dazzl-tv/mongoid-enum)
 
 Heavily inspired by [DHH's
