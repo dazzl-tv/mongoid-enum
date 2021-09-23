@@ -44,3 +44,6 @@ RSpec/MultipleMemoizedHelpers:
   Max: 6
 RSpec/NestedGroups:
   Max: 5
+RSpec/IdenticalEqualityAssertion:
+  Exclude:
+    - spec/mongoid/enum/dazzl_spec.rb

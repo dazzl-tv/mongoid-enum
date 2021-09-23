@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mongoid-enum-dazzl (1.0.0)
+    mongoid-enum-dazzl (1.0.1)
       mongoid (~> 7.2, >= 7.2.2)
 
 GEM
