@@ -7,10 +7,11 @@ require 'mongoid/enum/dazzl/info'
 
 Gem::Specification.new do |spec|
   version = Mongoid::Enum::Dazzl::VERSION
-  spec.version       = if ENV['GITHUB_REF'].eql?('refs/heads/master')
-                         version
-                       else
+  spec.version       = if ENV.key?('GITHUB_RUN_ID') &&
+                          !ENV['GITHUB_REF'].eql?('refs/heads/master')
                          "#{version}.pre.#{ENV['GITHUB_RUN_ID']}"
+                       else
+                         version
                        end
   spec.name          = Mongoid::Enum::Dazzl::GEM_NAME
   spec.authors       = Mongoid::Enum::Dazzl::AUTHORS
